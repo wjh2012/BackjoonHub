@@ -1,14 +1,11 @@
 from collections import deque
+import sys
 
-n = int(input())
-comm=[]
-for _ in range(n):
-    comm.append(input())
+n = int(sys.stdin.readline())
 
 dq=deque()
-        
-        
-for com in comm:
+for _ in range(n):
+    com=sys.stdin.readline().rstrip()
     if com.startswith('push'):
         com=com.split()
         if com[0]=='push_front':
