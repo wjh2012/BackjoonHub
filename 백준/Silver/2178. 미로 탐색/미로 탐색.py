@@ -9,28 +9,26 @@ def sol():
 
     dq=deque()
     dq.append((0,0))
-    visited=[]
     
     while dq:
         x,y=dq.popleft()
-        visited.append((x,y))
         if (x,y)==(N-1,M-1):
             print(grid[x][y])
             break
 
-        if x-1>=0 and grid[x-1][y]!=0 and (x-1,y) not in visited and (x-1,y) not in dq:
+        if x-1>=0 and grid[x-1][y]==1:
             dq.append((x-1,y))
             grid[x-1][y]=grid[x][y]+1
 
-        if x+1<N and grid[x+1][y]!=0 and (x+1,y) not in visited and (x+1,y) not in dq:
+        if x+1<N and grid[x+1][y]==1:
             dq.append((x+1,y))
             grid[x+1][y]=grid[x][y]+1
 
-        if y-1>=0 and grid[x][y-1]!=0  and (x,y-1) not in visited and (x,y-1) not in dq:
+        if y-1>=0 and grid[x][y-1]==1:
             dq.append((x,y-1))
             grid[x][y-1]=grid[x][y]+1
 
-        if y+1<M and grid[x][y+1]!=0  and (x,y+1) not in visited and (x,y+1) not in dq:
+        if y+1<M and grid[x][y+1]==1:
             dq.append((x,y+1))
             grid[x][y+1]=grid[x][y]+1
 
