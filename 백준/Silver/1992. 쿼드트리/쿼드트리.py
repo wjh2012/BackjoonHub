@@ -2,10 +2,6 @@ import sys
 
 def sq(a,n,x,y):
     global ans
-    
-    if n==1:
-        ans+=str(a[x][y])
-        return
 
     ini = a[x][y]
     flag = False
@@ -18,6 +14,15 @@ def sq(a,n,x,y):
             break
 
     if flag:
+        if n==2:
+            ans+='('
+            ans+=str(a[x][y])
+            ans+=str(a[x][y+1])
+            ans+=str(a[x+1][y])
+            ans+=str(a[x+1][y+1])
+            ans+=')'
+            return
+
         ans+='('
         nn = n//2
         sq(a,nn,x,y)
@@ -25,7 +30,6 @@ def sq(a,n,x,y):
         sq(a,nn,x+nn,y)
         sq(a,nn,x+nn,y+nn)
         ans+=')'
-
         return
     else:
         ans+=str(ini)
