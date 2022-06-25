@@ -1,9 +1,10 @@
 import sys
 
-def dfs(x,y,c,hap):
-    global N,M,result,paper,check
-    if c==5:
-        result = max(result,hap)
+def dfs(x,y,depth,sum_val):
+    global N,M,max_val,paper,check
+
+    if depth==4:
+        max_val=max(max_val,sum_val)
         return
 
     dx=[1,-1,0,0]
@@ -17,7 +18,7 @@ def dfs(x,y,c,hap):
 
         if check[nx][ny]:
             check[nx][ny]=False
-            dfs(nx,ny,c+1,hap+paper[nx][ny])
+            dfs(nx,ny,depth+1,sum_val+paper[nx][ny])
             check[nx][ny]=True
 
 def around(x,y):
@@ -40,18 +41,19 @@ def around(x,y):
         return 0
         
 def sol():
-    global N,M,result,paper,check
-    result=0
+    global N,M,max_val,paper,check
+    max_val=0
     N,M = map(int,sys.stdin.readline().split())
     paper=[list(map(int,sys.stdin.readline().split()))for _ in range(N)]
     check=[[True]*M for _ in range(N)]
 
     for i in range(N):
         for j in range(M):
-            visited=[]
-            dfs(i,j,1,0)
-            result = max(result,around(i,j))
+            check[i][j]=False
+            dfs(i,j,1,paper[i][j])
+            check[i][j]=True
+            max_val = max(max_val,around(i,j))
 
-    print(result)
+    print(max_val)
 
 sol()
