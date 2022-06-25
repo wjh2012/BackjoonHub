@@ -1,0 +1,57 @@
+import sys
+
+def dfs(x,y,c,hap):
+    global N,M,result,paper,check
+    if c==5:
+        result = max(result,hap)
+        return
+
+    dx=[1,-1,0,0]
+    dy=[0,0,1,-1]
+
+    for i in range(4):
+        nx=x+dx[i]
+        ny=y+dy[i]
+        if nx<0 or nx>N-1 or ny<0 or ny>M-1:
+            continue
+
+        if check[nx][ny]:
+            check[nx][ny]=False
+            dfs(nx,ny,c+1,hap+paper[nx][ny])
+            check[nx][ny]=True
+
+def around(x,y):
+    global N,M,paper
+    dx=[1,-1,0,0]
+    dy=[0,0,1,-1]
+    s=paper[x][y]
+    cros=[]
+    for i in range(4):
+        nx=x+dx[i]
+        ny=y+dy[i]
+        if nx<0 or nx>N-1 or ny<0 or ny>M-1:
+            continue
+        cros.append(paper[nx][ny])
+
+    if len(cros) >=3:
+        cros.sort(reverse=True)
+        return sum(cros[0:3])+s
+    else:
+        return 0
+        
+def sol():
+    global N,M,result,paper,check
+    result=0
+    N,M = map(int,sys.stdin.readline().split())
+    paper=[list(map(int,sys.stdin.readline().split()))for _ in range(N)]
+    check=[[True]*M for _ in range(N)]
+
+    for i in range(N):
+        for j in range(M):
+            visited=[]
+            dfs(i,j,1,0)
+            result = max(result,around(i,j))
+
+    print(result)
+
+sol()
