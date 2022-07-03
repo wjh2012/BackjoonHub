@@ -1,12 +1,14 @@
 import sys
 
 def sol():
-    n,m=map(int,input().split())
+    _,m=map(int,input().split())
     a = sorted(list(set(map(int,sys.stdin.readline().split()))))
     ans=[]
     n=len(a)
+
+
     def dfs():
-        if len(ans)==m :
+        if len(ans)==m:
             print(*ans)
             return
 
@@ -15,7 +17,6 @@ def sol():
                 ans.append(a[i])
                 dfs()
                 ans.pop()
-
     dfs()
 
 sol()
