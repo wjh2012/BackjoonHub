@@ -1,10 +1,11 @@
 from collections import deque, defaultdict
+import sys
 
 def sol():
-    N = int(input())
+    N = int(sys.stdin.readline())
     dic = defaultdict(list)
     for _ in range(N-1):
-        a,b=map(int,input().split())
+        a,b=map(int,sys.stdin.readline().split())
         dic[a].append(b)
         dic[b].append(a)
 
@@ -18,7 +19,6 @@ def sol():
                 dq.append(i)
                 visited[i]=x
 
-    for i in range(2,N+1):
-        print(visited[i])
+    print(*visited[2:],sep='\n')
 
 sol()
