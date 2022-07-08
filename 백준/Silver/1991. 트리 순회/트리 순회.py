@@ -1,42 +1,46 @@
 import sys
 
-def preorder(dfd,c):
+def preorder(c):
+    global dfd
     if c=='.':
         return
     child = dfd[c]
     print(c,end='')
-    preorder(dfd,child[0])
-    preorder(dfd,child[1])
+    preorder(child[0])
+    preorder(child[1])
          
-def inorder(dfd,c):
+def inorder(c):
+    global dfd
     if c=='.':
         return
     child = dfd[c]
-    inorder(dfd,child[0])
+    inorder(child[0])
     print(c,end='')
-    inorder(dfd,child[1])
+    inorder(child[1])
 
 
-def postorder(dfd,c):
+def postorder(c):
+    global dfd
     if c=='.':
         return
     child = dfd[c]
-    postorder(dfd,child[0])
-    postorder(dfd,child[1])
+    postorder(child[0])
+    postorder(child[1])
     print(c,end='')
     
 
 def sol():
     N = int(sys.stdin.readline())
+    global dfd
     dfd = dict()
     for _ in range(N):
         node, left, right = sys.stdin.readline().split()
         dfd[node]=[left,right]
     
-    preorder(dfd,'A')
+    preorder('A')
     print()
-    inorder(dfd,'A')
+    inorder('A')
     print()
-    postorder(dfd,'A')
+    postorder('A')
 
 sol()
