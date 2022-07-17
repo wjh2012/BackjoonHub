@@ -1,12 +1,12 @@
 import sys
 from collections import deque
 
+ans = 0
+
 def sol():
     N,M = map(int,input().split())
     Map = []
     virus = []
-    global ans
-    ans = 0
 
     def spread():
         TestMap = [[1]*(M+2)for _ in range(N+2)]
@@ -57,6 +57,6 @@ def sol():
                 virus.append((n,m))
     
     dfs(0)
-    print(ans)
 
 sol()
+print(ans)
