@@ -1,28 +1,30 @@
 import sys
 sys.setrecursionlimit(10**9)
+
 def sol():
+    # 전위 순회
     node = []
     while True:
         try:
             node.append(int(sys.stdin.readline()))
         except:
             break
-
-    def pre(start, end):
-        if start>end:
+    
+    ans = []
+    def post(s,e):
+        if s>e:
             return
 
-        fin = end+1
-
-        for i in range(start+1, end+1):
-            if node[start] < node[i]:
-                fin = i
+        pivot = e+1
+        for i in range(s+1, e+1):
+            if node[i] > node[s]:
+                pivot = i
                 break
-
-        pre(start+1, fin-1)
-        pre(fin, end)
-        print(node[start])
-
-    pre(0, len(node)-1)
+        
+        post(s+1, pivot-1)
+        post(pivot, e)
+        print(node[s])
+        
+    post(0, len(node)-1)
 
 sol()
