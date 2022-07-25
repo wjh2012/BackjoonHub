@@ -1,8 +1,8 @@
-import collections
 import sys
 import heapq
-INF = 400000
 from collections import defaultdict
+
+INF = 400000
 
 def sol():
     V, E = map(int,sys.stdin.readline().split())
