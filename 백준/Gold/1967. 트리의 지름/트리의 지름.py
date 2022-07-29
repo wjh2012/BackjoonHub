@@ -18,10 +18,7 @@ def sol():
         # 말단 노드
         if len(node)==0:
             return accum
-        # 자식 노드 1개
-        elif len(node)==1:
-            return dfs(node[0][0], accum + node[0][1])
-        # 자식노드 2개
+        # 자식노드 O
         else:
             first = 0
             second = 0
