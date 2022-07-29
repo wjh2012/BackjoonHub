@@ -39,7 +39,6 @@ def sol():
             ans = max(ans, inner)
             return choice
             
-    dfs(1,0)
     print(max(dfs(1,0),ans))
 
 sol()
