@@ -20,21 +20,8 @@ def sol():
 
         print(rootVal, end=' ')
 
-        tmp = pos+ridx-ins
-
-        Lins = ins
-        Line = ridx-1
-        Lpos = pos
-        Lpoe = tmp-1
-        if Lins <= Line and Lpos <=Lpoe:
-            preorder(Lins, Line, Lpos, Lpoe)
-
-        Rins = ridx+1
-        Rine = ine
-        Rpos = tmp
-        Rpoe = poe-1
-        if Rins <= Rine and Rpos <=Rpoe:
-            preorder(Rins, Rine, Rpos, Rpoe)
+        preorder(ins, ridx-1, pos, pos+ridx-ins-1)
+        preorder(ridx+1, ine, pos+ridx-ins, poe-1)
 
     preorder(0,n-1,0,n-1)
 
