@@ -20,8 +20,10 @@ def sol():
 
         print(rootVal, end=' ')
 
-        preorder(ins, ridx-1, pos, pos+ridx-ins-1)
-        preorder(ridx+1, ine, pos+ridx-ins, poe-1)
+        tmp = pos+ridx-ins
+
+        preorder(ins, ridx-1, pos, tmp-1)
+        preorder(ridx+1, ine, tmp, poe-1)
 
     preorder(0,n-1,0,n-1)
 
