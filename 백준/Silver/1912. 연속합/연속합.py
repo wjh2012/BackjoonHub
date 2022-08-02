@@ -15,7 +15,7 @@ def sol():
             k = dp[i-1] + num[i]
             dp[i] = max(k, num[i])
 
-        ans = max(ans, dp[i], num[i])
+        ans = max(ans, dp[i])
 
     print(ans)
 
