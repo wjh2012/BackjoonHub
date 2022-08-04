@@ -1,5 +1,6 @@
+import sys
 def sol():
-    N = int(input())
+    N = int(sys.stdin.readline())
 
     if N==1 or N==2:
         print(1)
