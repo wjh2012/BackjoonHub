@@ -1,10 +1,7 @@
 def sol():
     N = int(input())
 
-    if N==1:
-        print(1)
-        return
-    elif N==2:
+    if N==1 or N==2:
         print(1)
         return
 
