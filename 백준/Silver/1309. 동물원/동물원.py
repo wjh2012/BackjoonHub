@@ -7,9 +7,9 @@ def sol():
         print(3)
         return
 
-    a,b=3,7    
+    a,b=3,7
     for _ in range(N-2):
-        a,b = b,a+b*2
-    print(b%9901)
+        a,b = b,(a+b*2)%9901
+    print(b)
 
 sol()
